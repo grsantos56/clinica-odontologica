@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: RC_Odontologia
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.hibernate: INFO
