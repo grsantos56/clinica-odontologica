@@ -15,7 +15,7 @@ public class OpenApiConfig {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("RC Odontologia API")
+                        .title("clinica API")
                         .version("1.0")
                         .description("Documentação da API com autenticação JWT"))
                 // Adiciona o botão "Authorize" globalmente

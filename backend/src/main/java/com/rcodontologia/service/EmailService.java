@@ -35,7 +35,7 @@ public class EmailService {
      * Envia especificamente o e-mail de confirmação de cadastro.
      */
     public void sendConfirmationEmail(String toEmail, String code) {
-        String subject = "Confirmação de Cadastro RC Odontologia";
+        String subject = "Confirmação de Cadastro clinica";
         String text = "Seu código de confirmação de administrador é: " + code +
                 "\n\nEste código expira em 30 minutos. Por favor, utilize-o para ativar sua conta.";
 
