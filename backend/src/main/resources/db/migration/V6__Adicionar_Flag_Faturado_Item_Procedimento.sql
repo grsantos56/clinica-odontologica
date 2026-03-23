@@ -1,0 +1,2 @@
+ALTER TABLE procedimento_item
+ADD COLUMN faturado BOOLEAN NOT NULL DEFAULT TRUE;

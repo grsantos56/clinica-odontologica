@@ -1,0 +1,1 @@
+ALTER TABLE paciente ADD COLUMN data_previsao DATETIME;

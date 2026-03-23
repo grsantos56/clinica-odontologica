@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'senha_seu_banco'
+      MYSQL_DATABASE: 'nome_do_banco'
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      TZ: America/Sao_Paulo
+    
+      JAVA_TOOL_OPTIONS: "-Duser.timezone=America/Sao_Paulo"
+
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/nome_do_banco?useSSL=false&serverTimezone=America/Sao_Paulo&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: 'seu_username'
+      SPRING_DATASOURCE_PASSWORD: 'sua_senha'
+      APP_CORS_ALLOWED_ORIGIN: "http://localhost:5173" # Adicionei a URL do frontend para permitir CORS
+
+  frontend:
+    build: 
+      context: ./frontend
+      args:
+        VITE_API_URL: "/api"
+    ports:
+      - "80:80" 
+    depends_on:
+      - backend
+
+volumes:
+  mysql_data:

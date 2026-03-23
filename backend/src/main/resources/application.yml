@@ -2,6 +2,63 @@ spring:
   application:
     name: RC_Odontologia
 
+  datasource:
+    # URL para rodar dentro do Docker (Container conversando com Container)
+    url: jdbc:mysql://mysql:3306/nome_do_banco?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    # Se for rodar LOCAL (IntelliJ/Eclipse) conectando no Docker, use:
+    # url: jdbc:mysql://localhost:3306/nome_do_banco?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: seu_usuario
+    password: 'sua_senha'
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  # --------------------------------------------------------
+  # CONFIGURAÇÃO DO FLYWAY (MIGRATIONS)
+  # --------------------------------------------------------
+  flyway:
+    enabled: true              # Ativa o Flyway
+    baseline-on-migrate: true  # Permite iniciar em banco que já tem dados
+
+  # --------------------------------------------------------
+  # CONFIGURAÇÃO DO JPA / HIBERNATE
+  # --------------------------------------------------------
+  jpa:
+    hibernate:
+      ddl-auto: validate       
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: seuusuario@email.com
+    password: aaaa bbbb cccc dddd
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+cloudinary:
+  cloud_name: nome_da_sua_cloud
+  api_key: 123456789012345
+  api_secret: 'seu_api_secret_aqui'
+
+app:
+  jwt-secret: SuaChaveSecretaMuitoLongaEComplexaComPeloMenosSessentaEQuarentaCaracteresSegurosParaHS51212RCc
+  jwt-expiration-milliseconds: 86400000
+
+  cors:
+    allowed-origin: '*'
+
 logging:
   level:
     root: INFO
