@@ -28,3 +28,22 @@ cd clinica-odontologica
 
 ```bash
 docker-compose up -d --build
+```
+
+## Fotos do sistema
+
+<img src="/photos/agenda.png">
+<img src="/photos/atendimento.png">
+<img src="/photos/configurações.png">
+<img src="/photos/financeiro.png">
+<img src="/photos/home.png">
+<img src="/photos/landing_page.png">
+<img src="/photos/login.png">
+<img src="/photos/odontograma.png">
+<img src="/photos/paciente.png">
+<img src="/photos/pacientes.png">
+<img src="/photos/procedimentos.png">
+
+
+
+
