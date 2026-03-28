@@ -12,17 +12,20 @@ Um sistema de gestão integrado para clínicas odontológicas, desenvolvido com 
 - [Guia de Uso](#guia-de-uso)
 - [Screenshots](#screenshots)
 - [Resolução de Problemas](#resolução-de-problemas)
-- [Contato](#contato)
+- [Arquitetura](#arquitetura)
+- [Segurança](#segurança)
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Licença](#licença)
 
 ---
 
-## 🎯 Visão Geral
+## 🎯 Visão Geral {#visão-geral}
 
 A **Clínica Odontológica** é uma solução completa de software SaaS desenvolvida para simplificar a gestão de clínicas dentárias. O sistema oferece uma interface intuitiva e funcionalidades robustas para profissionais da área odontológica, permitindo melhor organização, eficiência operacional e melhor experiência para os pacientes.
 
 ---
 
-## ✨ Funcionalidades
+## ✨ Funcionalidades {#funcionalidades}
 
 ### 👥 Gestão de Pacientes
 - **Cadastro de Pacientes**: Registro completo com dados pessoais, contato e histórico médico
@@ -68,7 +71,7 @@ A **Clínica Odontológica** é uma solução completa de software SaaS desenvol
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Tecnologias Utilizadas {#tecnologias-utilizadas}
 
 ### 🎨 Frontend - React.js
 
@@ -121,7 +124,7 @@ A **Clínica Odontológica** é uma solução completa de software SaaS desenvol
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Estrutura do Projeto {#estrutura-do-projeto}
 
 ```text
 clinica-odontologica/
@@ -174,7 +177,7 @@ clinica-odontologica/
 └── LICENSE                   # Licença do projeto
 ```
 
-## 📋 Pré-requisitos
+## 📋 Pré-requisitos {#pré-requisitos}
 
 Antes de começar, certifique-se de ter instalado em sua máquina:
 
@@ -192,18 +195,24 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
 
 ---
 
-## 🚀 Instalação e Execução
+## 🚀 Instalação e Execução {#instalação-e-execução}
 
 ### ✅ Opção 1: Com Docker Compose (Recomendado)
 Esta é a forma mais rápida e recomendada para executar o projeto completo.
 
 #### Passo 1: Clonar o Repositório
+
 ```bash
-git clone [https://github.com/grsantos56/clinica-odontologica.git](https://github.com/grsantos56/clinica-odontologica.git)
+git clone https://github.com/grsantos56/clinica-odontologica.git
 cd clinica-odontologica
 ```
-Passo 2: Configurar Variáveis de AmbienteAbra o arquivo docker-compose.yml e configure as seguintes variáveis de ambiente:YAMLservices:
-```bash
+
+#### Passo 2: Configurar Variáveis de Ambiente
+
+Abra o arquivo `docker-compose.yml` e configure as seguintes variáveis de ambiente:
+
+```yaml
+services:
   mysql:
     environment:
       MYSQL_ROOT_PASSWORD: 'senha_segura_123'       # Mude para uma senha forte
@@ -219,51 +228,84 @@ Passo 2: Configurar Variáveis de AmbienteAbra o arquivo docker-compose.yml e co
     environment:
       VITE_API_URL: 'http://localhost:8080'         # URL do backend
 ```
-Passo 3: Iniciar os Serviços
+
+#### Passo 3: Iniciar os Serviços
+
 ```bash
 # Construir e iniciar todos os containers em background
 docker-compose up -d --build
 ```
-## Ou em primeiro plano (para ver os logs):
-```
+
+Ou em primeiro plano (para ver os logs):
+
+```bash
 docker-compose up --build
 ```
-Este comando irá:🗄️ Criar e iniciar o container MySQL na porta 3306🔙 Construir e iniciar o container Backend Spring Boot na porta 8080🎨 Construir e iniciar o container Frontend React na porta 80
-</br>
-Passo 4: Aguardar InicializaçãoAguarde alguns minutos enquanto os serviços inicializam: Verificar status dos containers
-```
+
+Este comando irá:
+- 🗄️ Criar e iniciar o container MySQL na porta 3306
+- 🔙 Construir e iniciar o container Backend Spring Boot na porta 8080
+- 🎨 Construir e iniciar o container Frontend React na porta 80
+
+#### Passo 4: Aguardar Inicialização
+
+Aguarde alguns minutos enquanto os serviços inicializam.
+
+Verificar status dos containers:
+
+```bash
 docker ps
 ```
-# Ver logs de um serviço específico
-```
+
+Ver logs de um serviço específico:
+
+```bash
 docker-compose logs -f backend      # Logs do backend
 docker-compose logs -f frontend     # Logs do frontend
 docker-compose logs -f mysql        # Logs do MySQL
 ```
-Passo 5: Acessar a AplicaçãoAbra seu navegador e acesse:<a href="ServiçoURLDescriçãoFrontendhttp://localhostAplicação">ServiçoURLDescriçãoFrontendhttp://localhostAplicação</a> principalBackend APIhttp://localhost:8080API RESTSwagger UIhttp://localhost:8080/swagger-ui.htmlDocumentação interativaMySQLlocalhost:3306Banco de dados
-</br>
-Parar os Serviços
-```
+
+#### Passo 5: Acessar a Aplicação
+
+Abra seu navegador e acesse:
+- **Frontend:** http://localhost (ou http://localhost:5173 para desenvolvimento local)
+- **Documentação da API:** http://localhost:8080/swagger-ui.html
+
+#### Parar os Serviços
+
+```bash
 # Parar todos os containers
 docker-compose down
-
 ```
 
-# Parar e remover volumes (cuidado, deleta dados do banco)
-```
+#### Parar e remover volumes
+
+```bash
+# Cuidado: deleta dados do banco
 docker-compose down -v
 ```
-💻 Opção 2: Desenvolvimento Local (Sem Docker)Backend (Spring Boot)Pré-requisitos:Java JDK 21MySQL 8.0 rodando localmenteMaven 3.8+Passos:Bash
 
-# 1. Navegue até o diretório backend
+### 💻 Opção 2: Desenvolvimento Local (Sem Docker)
 
-```
+#### Backend (Spring Boot)
+
+**Pré-requisitos:**
+- Java JDK 21
+- MySQL 8.0 rodando localmente
+- Maven 3.8+
+
+**Passos:**
+
+1. Navegue até o diretório backend:
+
+```bash
 cd backend
 ```
-# 2. Configure o banco de dados no arquivo:
-```
-# src/main/resources/application.yml
-YAMLspring:
+
+2. Configure o banco de dados no arquivo `src/main/resources/application.yml`:
+
+```yaml
+spring:
   datasource:
     url: jdbc:mysql://localhost:3306/clinica_db
     username: root
@@ -273,63 +315,222 @@ YAMLspring:
     hibernate:
       ddl-auto: validate
 ```
-# 3. Construa a aplicação
-```
+
+3. Construa a aplicação:
+
+```bash
 ./mvnw clean install
 ```
-# 4. Execute a aplicação
-```
+
+4. Execute a aplicação:
+
+```bash
 ./mvnw spring-boot:run
 ```
-O backend estará disponível em: http://localhost:8080Acessar documentação em: http://localhost:8080/swagger-ui.htmlFrontend (React + Vite)Pré-requisitos:Node.js 18+npm 9+Passos:Bash# 1. Navegue até o diretório frontend
-cd frontend
 
-# 2. Configure a URL do backend (se necessário)
+O backend estará disponível em: http://localhost:8080  
+Acessar documentação em: http://localhost:8080/swagger-ui.html
+
+#### Frontend (React + Vite)
+
+**Pré-requisitos:**
+- Node.js 18+
+- npm 9+
+
+**Passos:**
+
+1. Navegue até o diretório frontend:
+
+```bash
+cd frontend
 ```
+
+2. Configure a URL do backend (se necessário):
+
+```bash
 # Edite o arquivo .env:
 # VITE_API_URL=http://localhost:8080
 ```
 
-# 3. Instale as dependências
-```
+3. Instale as dependências:
+
+```bash
 npm install
 ```
 
-# 4. Inicie o servidor de desenvolvimento
-```
+4. Inicie o servidor de desenvolvimento:
+
+```bash
 npm run dev
 ```
-O frontend estará disponível em: http://localhost:5173Comandos úteis do frontend:Bash# Build para produção
 
-```
+O frontend estará disponível em: http://localhost:5173
+
+**Comandos úteis do frontend:**
+
+Build para produção:
+
+```bash
 npm run build
 ```
-# Validar código com ESLint
-```
+
+Validar código com ESLint:
+
+```bash
 npm run lint
 ```
-# Preview do build de produção
-```
+
+Preview do build de produção:
+
+```bash
 npm run preview
 ```
-📖 Guia de Uso🔐 Login InicialAcesse http://localhost (ou http://localhost:5173 em desenvolvimento)Você será redirecionado automaticamente para a página de loginUse as credenciais fornecidas pelo administrador da clínica👥 Cadastro de PacientesCaminho: Menu → Pacientes → Novo PacienteClique em "Pacientes" no menu lateral esquerdoSelecione o botão "Novo Paciente" ou "+"Preencha os dados do formulário (Pessoais, Contato, Endereço, Histórico Médico)Clique em "Salvar Paciente"📅 Agendar ConsultaCaminho: Menu → Agenda → Novo AgendamentoClique em "Agenda" no menu lateralSelecione "Novo Agendamento" ou "+"Preencha os dados (Paciente, Dentista, Data, Horário, Procedimento)Clique em "Confirmar Agendamento"💰 Gestão FinanceiraDashboard: Visualize o total de receitas, gráficos e transações em "Financeiro".Registrar Pagamento: Acesse "Financeiro" → "Registrar Sessão Financeira" e preencha o valor pago e método.Relatório: Acesse "Financeiro" → "Relatório Financeiro" para visualizar gráficos e exportar PDFs.🦷 Usar OdontogramaCaminho: Perfil do Paciente → OdontogramaAbra o perfil de um paciente e clique na aba "Odontograma"Clique nos dentes para anotar procedimentosSalve as alterações📄 Emitir ReceitaCaminho: Menu → ReceituárioClique em "Nova Receita" e selecione o pacientePreencha os medicamentos prescritos e dosagensClique em "Salvar" e depois em "Imprimir" para gerar o PDF🐛 Resolução de Problemas❌ Erro: "Conexão recusada ao banco de dados" Causa: O container MySQL não está rodando.Solução:Bashdocker ps
-docker-compose up -d mysql
 
-# Tente conectar
+---
+
+## 📖 Guia de Uso {#guia-de-uso}
+
+### 🔐 Login Inicial
+
+- Acesse http://localhost (ou http://localhost:5173 em desenvolvimento)
+- Você será redirecionado automaticamente para a página de login
+- Use as credenciais fornecidas pelo administrador da clínica
+
+### 👥 Cadastro de Pacientes
+
+**Caminho:** Menu → Pacientes → Novo Paciente
+
+1. Clique em "Pacientes" no menu lateral esquerdo
+2. Selecione o botão "Novo Paciente" ou "+"
+3. Preencha os dados do formulário (Pessoais, Contato, Endereço, Histórico Médico)
+4. Clique em "Salvar Paciente"
+
+### 📅 Agendar Consulta
+
+**Caminho:** Menu → Agenda → Novo Agendamento
+
+1. Clique em "Agenda" no menu lateral
+2. Selecione "Novo Agendamento" ou "+"
+3. Preencha os dados (Paciente, Dentista, Data, Horário, Procedimento)
+4. Clique em "Confirmar Agendamento"
+
+### 💰 Gestão Financeira
+
+- **Dashboard:** Visualize o total de receitas, gráficos e transações em "Financeiro"
+- **Registrar Pagamento:** Acesse "Financeiro" → "Registrar Sessão Financeira" e preencha o valor pago e método
+- **Relatório:** Acesse "Financeiro" → "Relatório Financeiro" para visualizar gráficos e exportar PDFs
+
+### 🦷 Usar Odontograma
+
+**Caminho:** Perfil do Paciente → Odontograma
+
+1. Abra o perfil de um paciente e clique na aba "Odontograma"
+2. Clique nos dentes para anotar procedimentos
+3. Salve as alterações
+
+### 📄 Emitir Receita
+
+**Caminho:** Menu → Receituário
+
+1. Clique em "Nova Receita" e selecione o paciente
+2. Preencha os medicamentos prescritos e dosagens
+3. Clique em "Salvar" e depois em "Imprimir" para gerar o PDF
+
+---
+
+## � Screenshots {#screenshots}
+
+### 🏠 Página Inicial (Home)
+
+Resumo executivo com métricas principais do sistema:
+
+![Página Inicial](photos/home.png)
+
+### 👥 Gestão de Pacientes
+
+Listagem e cadastro de pacientes com histórico completo:
+
+![Gestão de Pacientes](photos/pacientes.png)
+
+### 📅 Agenda de Consultas
+
+Visualização do calendário com agendamentos:
+
+![Agenda](photos/agenda.png)
+
+### 💰 Dashboard Financeiro
+
+Controle de receitas, despesas e fluxo de caixa:
+
+![Dashboard Financeiro](photos/financeiro.png)
+
+### 🦷 Odontograma Interativo
+
+Representação visual dos dentes para anotação de procedimentos:
+
+![Odontograma](photos/odontograma.png)
+
+
+---
+
+## �🐛 Resolução de Problemas {#resolução-de-problemas}
+
+### ❌ Erro: "Conexão recusada ao banco de dados"
+
+**Causa:** O container MySQL não está rodando.
+
+**Solução:** Verifique o status dos containers e inicie o MySQL:
+
+```bash
+docker ps
+docker-compose up -d mysql
 ```
+
+Tente conectar:
+
+```bash
 docker-compose exec mysql mysql -u root -p'sua_senha' -e "SELECT 1"
 ```
-❌ Erro: "Porta 80 já em uso" Causa: A porta 80 já está sendo usada.Solução:YAML# Edite docker-compose.yml:
+
+### ❌ Erro: "Porta 80 já em uso"
+
+**Causa:** A porta 80 já está sendo usada.
+
+**Solução:** Edite `docker-compose.yml`:
+
+```yaml
 services:
   frontend:
     ports:
       - "8888:80"  # Use a porta 8888 ao invés de 80
-❌ Erro: "Frontend não carrega" Causa: Cache ou erro de conexão.Solução:Bash# Limpe o cache ou use modo anônimo
+```
+
+### ❌ Erro: "Frontend não carrega"
+
+**Causa:** Cache ou erro de conexão.
+
+**Solução:** Limpe o cache ou reinicie o container:
+
+```bash
 docker-compose restart frontend
 curl http://localhost:8080/swagger-ui.html
-❌ Erro: "CORS Policy Block" Causa: Frontend e backend com origens diferentes.Solução:YAML# Verifique a variável no docker-compose.yml
+```
+
+### ❌ Erro: "CORS Policy Block"
+
+**Causa:** Frontend e backend com origens diferentes.
+
+**Solução:** Verifique a variável no `docker-compose.yml`:
+
+```yaml
 APP_CORS_ALLOWED_ORIGIN: "http://localhost"
-📊 ArquiteturaPlaintext
+```
+
+---
+
+## 📊 Arquitetura {#arquitetura}
+
+```plaintext
 ┌─────────────────────────────────────────────────────────────┐
 │                     CLIENTE (Browser)                       │
 │                  Frontend React + Vite                      │
@@ -358,11 +559,47 @@ APP_CORS_ALLOWED_ORIGIN: "http://localhost"
 │  │ Tabelas: Pacientes, Agendamentos, Usuarios, etc...   │   │
 │  └──────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────┘
-🔒 Segurança✅ Autenticação JWT: Tokens seguros e stateless✅ CORS Configurado: Apenas origens autorizadas✅ Senha Criptografada: Usando BCrypt✅ Validação de Input: Controle server-side👨‍💼 Sobre o ProjetoDesenvolvedor: Gabriel Rodrigues dos SantosGitHub: @grsantos56Versão: 0.0.1Status: Em DesenvolvimentoÚltima Atualização: 2026-03-28🤝 Contato e SuporteGitHub Issues: https://github.com/grsantos56/clinica-odontologica/issuesGitHub Discussions: https://github.com/grsantos56/clinica-odontologica/discussions📄 LicençaEste projeto é de código aberto e disponível sob a MIT License.Plaintext ╔════════════════════════════════════════╗
- ║   🦷 CLÍNICA ODONTOLÓGICA 🦷          ║
- ║   Sistema de Gestão Integrado          ║
- ║   Eficiência • Qualidade • Inovação    ║
- ╚════════════════════════════════════════╝
+```
+
+---
+
+## 🔒 Segurança {#segurança}
+
+✅ Autenticação JWT: Tokens seguros e stateless  
+✅ CORS Configurado: Apenas origens autorizadas  
+✅ Senha Criptografada: Usando BCrypt  
+✅ Validação de Input: Controle server-side  
+
+---
+
+## 👨‍💼 Sobre o Projeto {#sobre-o-projeto}
+
+**Desenvolvedor:** Gabriel Rodrigues dos Santos  
+**GitHub:** [@grsantos56](https://github.com/grsantos56)  
+**Versão:** 0.0.1  
+**Status:** Em Desenvolvimento  
+**Última Atualização:** 2026-03-28  
+
+---
+
+## 🤝 Contato e Suporte
+
+- **GitHub Issues:** https://github.com/grsantos56/clinica-odontologica/issues
+- **GitHub Discussions:** https://github.com/grsantos56/clinica-odontologica/discussions
+
+---
+
+## 📄 Licença {#licença}
+
+Este projeto é de código aberto e disponível sob a **MIT License**.
+
+```
+╔════════════════════════════════════════╗
+║   🦷 CLÍNICA ODONTOLÓGICA 🦷          ║
+║   Sistema de Gestão Integrado          ║
+║   Eficiência • Qualidade • Inovação    ║
+╚════════════════════════════════════════╝
+```
 
 
 
