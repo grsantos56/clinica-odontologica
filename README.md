@@ -19,13 +19,13 @@ Um sistema de gestão integrado para clínicas odontológicas, desenvolvido com 
 
 ---
 
-## 🎯 Visão Geral {#visão-geral}
+## 🎯 Visão Geral 
 
 A **Clínica Odontológica** é uma solução completa de software SaaS desenvolvida para simplificar a gestão de clínicas dentárias. O sistema oferece uma interface intuitiva e funcionalidades robustas para profissionais da área odontológica, permitindo melhor organização, eficiência operacional e melhor experiência para os pacientes.
 
 ---
 
-## ✨ Funcionalidades {#funcionalidades}
+## ✨ Funcionalidades 
 
 ### 👥 Gestão de Pacientes
 - **Cadastro de Pacientes**: Registro completo com dados pessoais, contato e histórico médico
@@ -71,7 +71,7 @@ A **Clínica Odontológica** é uma solução completa de software SaaS desenvol
 
 ---
 
-## 🛠️ Tecnologias Utilizadas {#tecnologias-utilizadas}
+## 🛠️ Tecnologias Utilizadas 
 
 ### 🎨 Frontend - React.js
 
@@ -124,7 +124,7 @@ A **Clínica Odontológica** é uma solução completa de software SaaS desenvol
 
 ---
 
-## 📁 Estrutura do Projeto {#estrutura-do-projeto}
+## 📁 Estrutura do Projeto 
 
 ```text
 clinica-odontologica/
@@ -177,7 +177,7 @@ clinica-odontologica/
 └── LICENSE                   # Licença do projeto
 ```
 
-## 📋 Pré-requisitos {#pré-requisitos}
+## 📋 Pré-requisitos 
 
 Antes de começar, certifique-se de ter instalado em sua máquina:
 
@@ -195,7 +195,7 @@ Antes de começar, certifique-se de ter instalado em sua máquina:
 
 ---
 
-## 🚀 Instalação e Execução {#instalação-e-execução}
+## 🚀 Instalação e Execução 
 
 ### ✅ Opção 1: Com Docker Compose (Recomendado)
 Esta é a forma mais rápida e recomendada para executar o projeto completo.
@@ -388,7 +388,7 @@ npm run preview
 
 ---
 
-## 📖 Guia de Uso {#guia-de-uso}
+## 📖 Guia de Uso 
 
 ### 🔐 Login Inicial
 
@@ -438,8 +438,7 @@ npm run preview
 
 ---
 
-## � Screenshots {#screenshots}
-
+## � Screenshots 
 ### 🏠 Página Inicial (Home)
 
 Resumo executivo com métricas principais do sistema:
@@ -473,7 +472,7 @@ Representação visual dos dentes para anotação de procedimentos:
 
 ---
 
-## �🐛 Resolução de Problemas {#resolução-de-problemas}
+## �🐛 Resolução de Problemas 
 
 ### ❌ Erro: "Conexão recusada ao banco de dados"
 
@@ -528,7 +527,7 @@ APP_CORS_ALLOWED_ORIGIN: "http://localhost"
 
 ---
 
-## 📊 Arquitetura {#arquitetura}
+## 📊 Arquitetura 
 
 ```plaintext
 ┌─────────────────────────────────────────────────────────────┐
@@ -563,7 +562,7 @@ APP_CORS_ALLOWED_ORIGIN: "http://localhost"
 
 ---
 
-## 🔒 Segurança {#segurança}
+## 🔒 Segurança 
 
 ✅ Autenticação JWT: Tokens seguros e stateless  
 ✅ CORS Configurado: Apenas origens autorizadas  
@@ -572,7 +571,7 @@ APP_CORS_ALLOWED_ORIGIN: "http://localhost"
 
 ---
 
-## 👨‍💼 Sobre o Projeto {#sobre-o-projeto}
+## 👨‍💼 Sobre o Projeto 
 
 **Desenvolvedor:** Gabriel Rodrigues dos Santos  
 **GitHub:** [@grsantos56](https://github.com/grsantos56)  
@@ -589,7 +588,7 @@ APP_CORS_ALLOWED_ORIGIN: "http://localhost"
 
 ---
 
-## 📄 Licença {#licença}
+## 📄 Licença 
 
 Este projeto é de código aberto e disponível sob a **MIT License**.
 
