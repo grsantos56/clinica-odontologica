@@ -3,7 +3,7 @@
 > Solução completa para gestão de clínicas dentárias: agendamentos, pacientes, financeiro e ferramentas odontológicas em um só lugar.
 
 ![Status](https://img.shields.io/badge/status-em%20desenvolvimento-yellow)
-![Versão](https://img.shields.io/badge/versão-0.0.1-blue)
+![Versão](https://img.shields.io/badge/versão-0.8.0-blue)
 ![Java](https://img.shields.io/badge/Java-21-orange)
 ![React](https://img.shields.io/badge/React-19.1.1-61dafb)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-4479a1)
@@ -77,7 +77,7 @@ A **Clínica Odontológica** é uma solução completa de software SaaS desenvol
 |---|---|
 | **Desenvolvedor** | Gabriel Rodrigues dos Santos |
 | **GitHub** | [@grsantos56](https://github.com/grsantos56) |
-| **Versão** | 0.0.1 |
+| **Versão** | 0.8.0 |
 | **Status** | Em Desenvolvimento |
 | **Última Atualização** | 2026-03-28 |
 
